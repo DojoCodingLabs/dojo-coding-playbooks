@@ -36,9 +36,178 @@ Aquí es donde entra en juego `git worktree`. Esta funcionalidad de Git nos perm
 
 Esto significa que podemos asignar a cada agente de IA su propia carpeta y su propia rama para trabajar. Una vez que cada agente ha completado su tarea, podemos fusionar (merge) su trabajo de vuelta a la rama principal, tal como lo haríamos en un equipo de desarrollo humano.
 
+## Configuración Manual: Paso a Paso con Git Worktrees
+
+Antes de automatizar el proceso, es importante entender cómo funciona la configuración manual. Esto te dará una base sólida para después apreciar la automatización.
+
+### Configuración Inicial del Proyecto
+
+1. **Estructura Base del Proyecto**
+   ```
+   mi-proyecto/
+   ├── app/              # Repositorio principal 
+   │   ├── src/
+   │   ├── .git/
+   │   ├── package.json
+   │   └── README.md
+   └── worktrees/        # Directorio para agentes (lo crearemos)
+       ├── feature-auth/
+       ├── feature-dashboard/
+       └── feature-api/
+   ```
+
+2. **Crear el Directorio de Worktrees**
+   ```bash
+   # Desde el directorio raíz del proyecto
+   mkdir worktrees
+   cd app/  # Navegar al repositorio principal
+   ```
+
+### Creación Manual de Agentes con Worktrees
+
+3. **Crear el Primer Agente (Ejemplo: Authentication)**
+   ```bash
+   # Crear worktree con rama nueva
+   git worktree add ../worktrees/feature-auth -b feature/auth
+   
+   # Verificar que se creó correctamente
+   git worktree list
+   ```
+
+4. **Configurar el Entorno del Agente**
+   ```bash
+   # Navegar al nuevo worktree
+   cd ../worktrees/feature-auth/
+   
+   # Copiar configuraciones base
+   cp -r ../../app/.claude ./
+   cp -r ../../app/.vscode ./
+   cp ../../app/package.json ./
+   cp ../../app/.gitignore ./
+   ```
+
+5. **Crear Configuración Única de VS Code/Cursor**
+   
+   Crear `.vscode/settings.json`:
+   ```json
+   {
+     "workbench.colorTheme": "Monokai",
+     "workbench.colorCustomizations": {
+       "titleBar.activeBackground": "#FF6B35",
+       "titleBar.activeForeground": "#FFFFFF",
+       "activityBar.background": "#FF6B35",
+       "statusBar.background": "#FF6B35"
+     },
+     "window.title": "${rootName} - Agente AUTH"
+   }
+   ```
+
+6. **Crear README.md Específico del Agente**
+   ```markdown
+   # Agente de Autenticación 🔐
+   
+   ## Responsabilidades
+   - Implementar sistema de login/logout
+   - Gestión de sesiones de usuario
+   - Integración con JWT tokens
+   - Middleware de autenticación
+   
+   ## Contexto del Proyecto
+   Este worktree está dedicado exclusivamente al desarrollo
+   del sistema de autenticación. Trabajas en la rama 
+   feature/auth y debes enfocarte solo en estas funcionalidades.
+   ```
+
+7. **Hacer el Commit Inicial**
+   ```bash
+   git add .
+   git commit -m "feat: inicializar worktree de autenticación"
+   ```
+
+### Repetir el Proceso para Más Agentes
+
+8. **Crear Segundo Agente (Dashboard)**
+   ```bash
+   cd ../../app/  # Volver al repo principal
+   git worktree add ../worktrees/feature-dashboard -b feature/dashboard
+   
+   cd ../worktrees/feature-dashboard/
+   cp -r ../../app/.claude ./
+   cp -r ../../app/.vscode ./
+   cp ../../app/package.json ./
+   cp ../../app/.gitignore ./
+   ```
+
+9. **Configurar Colores Únicos para Dashboard**
+   
+   `.vscode/settings.json`:
+   ```json
+   {
+     "workbench.colorTheme": "Dark+ (default dark)",
+     "workbench.colorCustomizations": {
+       "titleBar.activeBackground": "#00D4AA",
+       "titleBar.activeForeground": "#FFFFFF",
+       "activityBar.background": "#00D4AA",
+       "statusBar.background": "#00D4AA"
+     },
+     "window.title": "${rootName} - Agente DASHBOARD"
+   }
+   ```
+
+### Abrir y Gestionar Múltiples Instancias
+
+10. **Abrir Cada Agente en Cursor/VS Code**
+    ```bash
+    # Abrir cada worktree en una ventana separada
+    cursor ../worktrees/feature-auth
+    cursor ../worktrees/feature-dashboard
+    cursor ../worktrees/feature-api
+    ```
+
+11. **Inicializar Claude Code en Cada Instancia**
+    ```bash
+    # En cada terminal de cada ventana
+    claude
+    ```
+
+12. **Verificar la Configuración**
+    - Cada ventana debe tener un color diferente en la barra de título
+    - Cada agente debe estar en su rama correspondiente
+    - Los archivos de configuración deben estar presentes
+
+### Flujo de Trabajo Manual
+
+13. **Asignar Tareas Específicas**
+    ```bash
+    # En la ventana del agente AUTH
+    > Lee tu README.md y comienza a implementar el sistema de autenticación con JWT
+    
+    # En la ventana del agente DASHBOARD  
+    > Lee tu README.md y crea un dashboard con componentes reutilizables
+    ```
+
+14. **Integrar Cambios Manualmente**
+    ```bash
+    # Una vez que un agente complete su trabajo
+    cd worktrees/feature-auth/
+    git add .
+    git commit -m "feat: implementar autenticación JWT completa"
+    
+    # Volver al repo principal y fusionar
+    cd ../../app/
+    git merge feature/auth
+    ```
+
+### Ventajas del Proceso Manual
+
+- **Control Total**: Entiendes cada paso del proceso
+- **Personalización**: Puedes ajustar cada configuración específicamente
+- **Debugging**: Más fácil identificar problemas en la configuración
+- **Aprendizaje**: Comprendes profundamente cómo funcionan los worktrees
+
 ## Automatizando la Creación de Agentes con Goose y un Prompt Inteligente
 
-Para no tener que crear cada worktree manualmente, automatizaremos el proceso usando Codename Goose y un prompt especialmente diseñado para esta tarea.
+Ahora que entiendes el proceso manual, automatizaremos usando Codename Goose para que puedas crear múltiples agentes en segundos.
 
 ### El Prompt para la Creación de Worktrees
 
@@ -238,6 +407,6 @@ Los beneficios van más allá de la velocidad: obtienes mejor arquitectura, cód
 ### Recursos Complementarios
 - **[Documentación de Git Worktrees](https://git-scm.com/docs/git-worktree)** - Documentación oficial de Git Worktrees
 - **[Mejores Prácticas de Desarrollo Multi-agente](https://github.com/topics/multi-agent)** - Repositorios y ejemplos
-- **[Commits Convencionales](https://www.conventionalcommits.org/)** - Estándar para mensajes de commit
+- **[Commits Semánticos](https://www.conventionalcommits.org/)** - Estándar para mensajes de commit
 
 ¡Espero que este tutorial te sea de gran utilidad! Prueba esta metodología, experimenta con diferentes agentes y comparte tus resultados. ¡Feliz codificación con tu nuevo ejército de IA! 🚀
