@@ -1,4 +1,4 @@
-# Domina el Desarrollo Multi-agente con Claude Code, Cursor y Git Worktrees 🚀
+# Master Multi-Agent Development with Claude Code, Cursor and Git Worktrees 🚀
 
 ## 📌 Objetivos de Aprendizaje
 

@@ -1,9 +1,9 @@
-# 🥋 Dojo Coding - Playbooks Oficiales
+# 🥋 Dojo Coding - Official Playbooks
 
 <div align="center">
   <img src="https://www.dojocoding.io/images/logo.png" alt="Dojo Coding" width="200"/>
   
-  **Centralizando Talento Para Descentralizar El Futuro**
+  **Centralizing Talent To Decentralize The Future**
   
   [![Website](https://img.shields.io/badge/Website-dojocoding.io-blue)](https://www.dojocoding.io/)
   [![Developers](https://img.shields.io/badge/Developers-1800+-green)](https://www.dojocoding.io/)
@@ -11,99 +11,99 @@
   [![Startups](https://img.shields.io/badge/Startups-8+-purple)](https://www.dojocoding.io/)
 </div>
 
-## 🌟 ¿Qué es Dojo Coding?
+## 🌟 What is Dojo Coding?
 
-Dojo Coding es el ecosistema latinoamericano líder en desarrollo de talento tecnológico, especializado en **Web3**, **Inteligencia Artificial** y **Ciberseguridad**. Nuestra misión es construir un puente entre el talento emergente de Latinoamérica y las oportunidades globales en tecnologías descentralizadas.
+Dojo Coding is the leading Latin American ecosystem for technological talent development, specialized in **Web3**, **Artificial Intelligence**, and **Cybersecurity**. Our mission is to build a bridge between emerging talent from Latin America and global opportunities in decentralized technologies.
 
-## 🎯 Nuestro Ecosistema
+## 🎯 Our Ecosystem
 
 ### 🎓 **Academy**
-Transformamos desarrolladores a través de:
-- **Entrenamiento de alto impacto** en tecnologías emergentes
-- **Modelo "aprende mientras ganas"** - monetiza tus habilidades desde el día uno
-- **Desarrollo de habilidades** en Web3, IA y ciberseguridad
-- **Portafolios globales** que abren puertas internacionales
+We transform developers through:
+- **High-impact training** in emerging technologies
+- **"Learn while you earn" model** - monetize your skills from day one
+- **Skill development** in Web3, AI, and cybersecurity
+- **Global portfolios** that open international doors
 
 ### 🏢 **Enterprise**
-Implementamos soluciones tecnológicas para empresas:
-- **Implementación de Web3 e IA** con expertise latinoamericano
-- **Resultados garantizados** respaldados por nuestro talento certificado
-- **Consultoría especializada** en tecnologías descentralizadas
-- **Equipos técnicos** altamente capacitados
+We implement technological solutions for companies:
+- **Web3 and AI implementation** with Latin American expertise
+- **Guaranteed results** backed by our certified talent
+- **Specialized consulting** in decentralized technologies
+- **Highly trained technical teams**
 
 ### 🚀 **Launchpad**
-Aceleramos startups desde la idea hasta el financiamiento:
-- **Programa de 120 días** de idea a startup financiada
-- **Co-fundador técnico garantizado** para superar barreras tecnológicas
-- **Formación de equipos** especializados en tecnologías emergentes
-- **Acceso a red de inversionistas** y mentores del ecosistema
+We accelerate startups from idea to funding:
+- **120-day program** from idea to funded startup
+- **Guaranteed technical co-founder** to overcome technological barriers
+- **Team formation** specialized in emerging technologies
+- **Access to investor network** and ecosystem mentors
 
-## 📊 Nuestro Impacto
+## 📊 Our Impact
 
-| Métrica | Logro |
+| Metric | Achievement |
 |---------|-------|
-| 👨‍💻 **Desarrolladores Transformados** | 1,800+ |
-| 💰 **Grants Blockchain Conseguidos** | $700k+ |
-| 👥 **Equipos Formados** | 20+ |
-| 🚀 **Startups Lanzadas** | 8+ |
-| 🌎 **Países de Operación** | 8+ |
+| 👨‍💻 **Developers Transformed** | 1,800+ |
+| 💰 **Blockchain Grants Secured** | $700k+ |
+| 👥 **Teams Formed** | 20+ |
+| 🚀 **Startups Launched** | 8+ |
+| 🌎 **Countries of Operation** | 8+ |
 
-## 🛣️ Rutas de Crecimiento
+## 🛣️ Growth Paths
 
-### Para Desarrolladores
-1. **Dominio de Habilidades** - Especialízate en tecnologías del futuro
-2. **Portafolio Global** - Construye proyectos que impresionen mundialmente
-3. **Potencial de Ingresos** - Monetiza tus habilidades desde el primer día
-4. **Oportunidades de Startup** - Conviértete en co-fundador técnico
+### For Developers
+1. **Skill Mastery** - Specialize in future technologies
+2. **Global Portfolio** - Build projects that impress worldwide
+3. **Income Potential** - Monetize your skills from day one
+4. **Startup Opportunities** - Become a technical co-founder
 
-### Para Empresas
-1. **Implementación Técnica** - Lleva tu empresa al futuro con Web3 e IA
-2. **Talento Especializado** - Accede al mejor talento latinoamericano
-3. **Resultados Medibles** - Implementaciones con garantía de resultados
-4. **Costo-Efectividad** - Soluciones de alta calidad a precios competitivos
+### For Companies
+1. **Technical Implementation** - Take your company to the future with Web3 and AI
+2. **Specialized Talent** - Access the best Latin American talent
+3. **Measurable Results** - Implementations with guaranteed results
+4. **Cost-Effectiveness** - High-quality solutions at competitive prices
 
-### Para Emprendedores
-1. **Validación de Idea** - Transforma tu concepto en MVP viable
-2. **Equipo Técnico** - Encuentra tu co-fundador técnico ideal
-3. **Desarrollo Rápido** - De idea a producto en 120 días
-4. **Financiamiento** - Conecta con nuestra red de inversionistas
+### For Entrepreneurs
+1. **Idea Validation** - Transform your concept into a viable MVP
+2. **Technical Team** - Find your ideal technical co-founder
+3. **Rapid Development** - From idea to product in 120 days
+4. **Funding** - Connect with our investor network
 
-## 📚 ¿Qué son los Playbooks?
+## 📚 What are Playbooks?
 
-Este repositorio contiene **playbooks oficiales** de Dojo Coding: guías prácticas, tutoriales y metodologías que utilizamos internamente y compartimos con nuestra comunidad para:
+This repository contains **official Dojo Coding playbooks**: practical guides, tutorials, and methodologies that we use internally and share with our community for:
 
-- 🛠️ **Desarrollo con IA** - Técnicas avanzadas de programación asistida
-- 🔗 **Implementación Web3** - Guías para blockchain y DeFi
-- 🔐 **Ciberseguridad** - Mejores prácticas y herramientas defensivas
-- 🚀 **Desarrollo de Startups** - Metodologías probadas para lanzamiento rápido
-- 📈 **Escalamiento Técnico** - Estrategias para hacer crecer equipos tech
+- 🛠️ **AI Development** - Advanced assisted programming techniques
+- 🔗 **Web3 Implementation** - Guides for blockchain and DeFi
+- 🔐 **Cybersecurity** - Best practices and defensive tools
+- 🚀 **Startup Development** - Proven methodologies for rapid launch
+- 📈 **Technical Scaling** - Strategies for growing tech teams
 
-## 🎖️ Reconocimientos
+## 🎖️ Recognition
 
-Dojo Coding ha sido destacado en publicaciones líderes de la industria:
-- **DL News** - Reconocimiento por innovación en educación Web3
-- **CryptoSlate** - Cobertura de nuestros programas de desarrollo
-- **Redline Lab** - Inversión estratégica y respaldo
+Dojo Coding has been featured in leading industry publications:
+- **DL News** - Recognition for innovation in Web3 education
+- **CryptoSlate** - Coverage of our development programs
+- **Redline Lab** - Strategic investment and support
 
-## 🌎 Comunidad Global
+## 🌎 Global Community
 
-Únete a nuestra comunidad de desarrolladores, empresarios y visionarios:
+Join our community of developers, entrepreneurs, and visionaries:
 
 - 🌐 **Website**: [dojocoding.io](https://www.dojocoding.io/)
-- 💼 **LinkedIn**: Sigue nuestras actualizaciones
-- 🐦 **Twitter**: Últimas noticias del ecosistema
-- 💬 **Discord**: Conecta con la comunidad
-- 📧 **Newsletter**: Recibe contenido exclusivo
+- 💼 **LinkedIn**: Follow our updates
+- 🐦 **Twitter**: Latest ecosystem news
+- 💬 **Discord**: Connect with the community
+- 📧 **Newsletter**: Receive exclusive content
 
-## 🎯 Nuestros Valores
+## 🎯 Our Values
 
-- **🌟 Excelencia** - Buscamos la máxima calidad en todo lo que hacemos
-- **🤝 Colaboración** - Creemos en el poder del trabajo en equipo
-- **🚀 Innovación** - Adoptamos las tecnologías más avanzadas
-- **🌍 Impacto** - Trabajamos para transformar Latinoamérica
-- **📚 Aprendizaje** - Nunca dejamos de crecer y evolucionar
+- **🌟 Excellence** - We seek maximum quality in everything we do
+- **🤝 Collaboration** - We believe in the power of teamwork
+- **🚀 Innovation** - We adopt the most advanced technologies
+- **🌍 Impact** - We work to transform Latin America
+- **📚 Learning** - We never stop growing and evolving
 
-## 🛠️ Tecnologías Principales
+## 🛠️ Core Technologies
 
 ### Web3 & Blockchain
 - Ethereum, Polygon, Binance Smart Chain
@@ -111,36 +111,36 @@ Dojo Coding ha sido destacado en publicaciones líderes de la industria:
 - DeFi, NFTs, DAOs
 - Layer 2 Solutions
 
-### Inteligencia Artificial
+### Artificial Intelligence
 - Machine Learning, Deep Learning
 - Claude Code, OpenAI, Anthropic
 - Computer Vision, NLP
 - MLOps, AI Deployment
 
-### Ciberseguridad
+### Cybersecurity
 - Pentesting, Ethical Hacking
 - Secure Development
 - Blockchain Security Audits
 - DevSecOps
 
-## 📞 ¿Listo para Comenzar?
+## 📞 Ready to Get Started?
 
-### Para Desarrolladores
-¿Quieres transformar tu carrera y especializarte en las tecnologías del futuro?
-👉 **[Únete a la Academy](https://www.dojocoding.io/)**
+### For Developers
+Want to transform your career and specialize in future technologies?
+👉 **[Join the Academy](https://www.dojocoding.io/)**
 
-### Para Empresas
-¿Necesitas implementar Web3 o IA en tu organización?
-👉 **[Explora Enterprise](https://www.dojocoding.io/)**
+### For Companies
+Need to implement Web3 or AI in your organization?
+👉 **[Explore Enterprise](https://www.dojocoding.io/)**
 
-### Para Emprendedores
-¿Tienes una idea pero necesitas un co-fundador técnico?
-👉 **[Acelera tu Startup](https://www.dojocoding.io/)**
+### For Entrepreneurs
+Have an idea but need a technical co-founder?
+👉 **[Accelerate your Startup](https://www.dojocoding.io/)**
 
 ---
 
 <div align="center">
-  <strong>🥋 Dojo Coding - Donde el Talento Latinoamericano Conquista el Mundo Tech 🌎</strong>
+  <strong>🥋 Dojo Coding - Where Latin American Talent Conquers the Tech World 🌎</strong>
   
-  *Construyendo el futuro descentralizado, un desarrollador a la vez*
+  *Building the decentralized future, one developer at a time*
 </div>
