@@ -1,94 +1,94 @@
 # Master Multi-Agent Development with Claude Code, Cursor and Git Worktrees 🚀
 
-## 📌 Objetivos de Aprendizaje
+## 📌 Learning Objectives
 
-Al finalizar este tutorial serás capaz de:
+After completing this tutorial you will be able to:
 
-- **Configurar un entorno multi-agente** utilizando Git Worktrees para aislar el trabajo de diferentes agentes de IA
-- **Automatizar la creación de worktrees** con Codename Goose y prompts optimizados
-- **Gestionar múltiples instancias de Claude Code y Cursor** trabajando simultáneamente en diferentes features
-- **Integrar el trabajo de varios agentes** resolviendo conflictos y manteniendo la coherencia del código
-- **Optimizar tu flujo de desarrollo** superando las limitaciones de un solo agente trabajando secuencialmente
+- **Set up a multi-agent environment** using Git Worktrees to isolate the work of different AI agents
+- **Automate worktree creation** with Codename Goose and optimized prompts
+- **Manage multiple instances of Claude Code and Cursor** working simultaneously on different features
+- **Integrate work from multiple agents** resolving conflicts and maintaining code coherence
+- **Optimize your development workflow** overcoming the limitations of a single agent working sequentially
 
-## 💡 Introducción
+## 💡 Introduction
 
-¿Te imaginas tener un equipo de desarrolladores de IA trabajando para ti simultáneamente en el mismo proyecto? En este tutorial, aprenderás a crear y gestionar un ejército de agentes de codificación utilizando Claude Code, Git Worktrees y Codename Goose. La idea es superar la limitación de que Claude Code solo puede manejar una solicitud a la vez, permitiéndote realizar múltiples tareas y acelerar tu flujo de desarrollo de manera significativa.
+Can you imagine having a team of AI developers working for you simultaneously on the same project? In this tutorial, you'll learn to create and manage an army of coding agents using Claude Code, Git Worktrees, and Codename Goose. The idea is to overcome the limitation that Claude Code can only handle one request at a time, allowing you to perform multiple tasks and significantly accelerate your development workflow.
 
 ---
 
-## Herramientas que Necesitarás 🛠️
+## Tools You'll Need 🛠️
 
-Para seguir este tutorial, necesitarás familiarizarte con las siguientes herramientas:
+To follow this tutorial, you'll need to familiarize yourself with the following tools:
 
-- **Claude Code**: Un potente agente de desarrollo en línea de comandos (CLI) creado por Anthropic. Es excelente para generar, modificar y entender código.
-- **Codename Goose**: Una herramienta de código abierto de Block que actúa como un agente local en tu máquina, capaz de manipular archivos, carpetas y ejecutar comandos. La usaremos para automatizar la configuración de nuestro entorno.
-- **Cursor**: Un editor de código "IA-first" que usaremos para visualizar y gestionar las diferentes carpetas y ramas de nuestro proyecto. Funciona muy bien con la terminal integrada.
+- **Claude Code**: A powerful command-line development agent (CLI) created by Anthropic. It's excellent for generating, modifying, and understanding code.
+- **Codename Goose**: An open-source tool from Block that acts as a local agent on your machine, capable of manipulating files, folders, and executing commands. We'll use it to automate our environment setup.
+- **Cursor**: An "AI-first" code editor that we'll use to visualize and manage the different folders and branches of our project. It works very well with the integrated terminal.
 
-> **Nota importante**: Este tutorial está basado en las versiones actuales de las herramientas (Julio 2025). Claude Code está en preview y algunas configuraciones pueden cambiar con actualizaciones futuras.
+> **Important note**: This tutorial is based on current versions of the tools (July 2025). Claude Code is in preview and some configurations may change with future updates.
 
-## El Problema: Multitasking con Agentes de IA
+## The Problem: Multitasking with AI Agents
 
-Cuando trabajas con un agente de IA como Claude Code, este toma una tarea, la procesa y te da un resultado. Durante ese tiempo de "pensamiento" y ejecución, no puedes asignarle otra tarea. Esto crea un cuello de botella. La solución obvia sería abrir varias instancias del agente, pero esto presenta un nuevo problema: si todos los agentes trabajan en la misma rama (main, por ejemplo), pueden sobrescribir el trabajo de los demás, generando conflictos y caos en el código.
+When you work with an AI agent like Claude Code, it takes a task, processes it, and gives you a result. During that "thinking" and execution time, you can't assign another task to it. This creates a bottleneck. The obvious solution would be to open multiple instances of the agent, but this presents a new problem: if all agents work on the same branch (main, for example), they can overwrite each other's work, generating conflicts and chaos in the code.
 
-## La Solución: Git Worktrees para Aislamiento
+## The Solution: Git Worktrees for Isolation
 
-Aquí es donde entra en juego `git worktree`. Esta funcionalidad de Git nos permite tener múltiples ramas de un mismo repositorio "desplegadas" en diferentes carpetas al mismo tiempo. Cada carpeta (o worktree) se comporta como un repositorio independiente con su propia rama, pero todos están conectados al mismo repositorio `.git` subyacente.
+This is where `git worktree` comes into play. This Git functionality allows us to have multiple branches of the same repository "deployed" in different folders simultaneously. Each folder (or worktree) behaves like an independent repository with its own branch, but all are connected to the same underlying `.git` repository.
 
-Esto significa que podemos asignar a cada agente de IA su propia carpeta y su propia rama para trabajar. Una vez que cada agente ha completado su tarea, podemos fusionar (merge) su trabajo de vuelta a la rama principal, tal como lo haríamos en un equipo de desarrollo humano.
+This means we can assign each AI agent its own folder and its own branch to work on. Once each agent has completed its task, we can merge their work back to the main branch, just as we would do with a human development team.
 
-## Configuración Manual: Paso a Paso con Git Worktrees
+## Manual Setup: Step by Step with Git Worktrees
 
-Antes de automatizar el proceso, es importante entender cómo funciona la configuración manual. Esto te dará una base sólida para después apreciar la automatización.
+Before automating the process, it's important to understand how manual setup works. This will give you a solid foundation to later appreciate the automation.
 
-### Configuración Inicial del Proyecto
+### Initial Project Setup
 
-1. **Estructura Base del Proyecto**
+1. **Base Project Structure**
    ```
-   mi-proyecto/
-   ├── app/              # Repositorio principal 
+   my-project/
+   ├── app/              # Main repository 
    │   ├── src/
    │   ├── .git/
    │   ├── package.json
    │   └── README.md
-   └── worktrees/        # Directorio para agentes (lo crearemos)
+   └── worktrees/        # Directory for agents (we'll create this)
        ├── feature-auth/
        ├── feature-dashboard/
        └── feature-api/
    ```
 
-2. **Crear el Directorio de Worktrees**
+2. **Create the Worktrees Directory**
    ```bash
-   # Desde el directorio raíz del proyecto
+   # From the project root directory
    mkdir worktrees
-   cd app/  # Navegar al repositorio principal
+   cd app/  # Navigate to the main repository
    ```
 
-### Creación Manual de Agentes con Worktrees
+### Manual Agent Creation with Worktrees
 
-3. **Crear el Primer Agente (Ejemplo: Authentication)**
+3. **Create the First Agent (Example: Authentication)**
    ```bash
-   # Crear worktree con rama nueva
+   # Create worktree with new branch
    git worktree add ../worktrees/feature-auth -b feature/auth
    
-   # Verificar que se creó correctamente
+   # Verify it was created correctly
    git worktree list
    ```
 
-4. **Configurar el Entorno del Agente**
+4. **Configure the Agent Environment**
    ```bash
-   # Navegar al nuevo worktree
+   # Navigate to the new worktree
    cd ../worktrees/feature-auth/
    
-   # Copiar configuraciones base
+   # Copy base configurations
    cp -r ../../app/.claude ./
    cp -r ../../app/.vscode ./
    cp ../../app/package.json ./
    cp ../../app/.gitignore ./
    ```
 
-5. **Crear Configuración Única de VS Code/Cursor**
+5. **Create Unique VS Code/Cursor Configuration**
    
-   Crear `.vscode/settings.json`:
+   Create `.vscode/settings.json`:
    ```json
    {
      "workbench.colorTheme": "Monokai",
@@ -98,37 +98,37 @@ Antes de automatizar el proceso, es importante entender cómo funciona la config
        "activityBar.background": "#FF6B35",
        "statusBar.background": "#FF6B35"
      },
-     "window.title": "${rootName} - Agente AUTH"
+     "window.title": "${rootName} - Agent AUTH"
    }
    ```
 
-6. **Crear README.md Específico del Agente**
+6. **Create Agent-Specific README.md**
    ```markdown
-   # Agente de Autenticación 🔐
+   # Authentication Agent 🔐
    
-   ## Responsabilidades
-   - Implementar sistema de login/logout
-   - Gestión de sesiones de usuario
-   - Integración con JWT tokens
-   - Middleware de autenticación
+   ## Responsibilities
+   - Implement login/logout system
+   - User session management
+   - JWT token integration
+   - Authentication middleware
    
-   ## Contexto del Proyecto
-   Este worktree está dedicado exclusivamente al desarrollo
-   del sistema de autenticación. Trabajas en la rama 
-   feature/auth y debes enfocarte solo en estas funcionalidades.
+   ## Project Context
+   This worktree is exclusively dedicated to developing
+   the authentication system. You work on the 
+   feature/auth branch and should focus only on these functionalities.
    ```
 
-7. **Hacer el Commit Inicial**
+7. **Make Initial Commit**
    ```bash
    git add .
-   git commit -m "feat: inicializar worktree de autenticación"
+   git commit -m "feat: initialize authentication worktree"
    ```
 
-### Repetir el Proceso para Más Agentes
+### Repeat the Process for More Agents
 
-8. **Crear Segundo Agente (Dashboard)**
+8. **Create Second Agent (Dashboard)**
    ```bash
-   cd ../../app/  # Volver al repo principal
+   cd ../../app/  # Return to main repo
    git worktree add ../worktrees/feature-dashboard -b feature/dashboard
    
    cd ../worktrees/feature-dashboard/
@@ -138,7 +138,7 @@ Antes de automatizar el proceso, es importante entender cómo funciona la config
    cp ../../app/.gitignore ./
    ```
 
-9. **Configurar Colores Únicos para Dashboard**
+9. **Configure Unique Colors for Dashboard**
    
    `.vscode/settings.json`:
    ```json
@@ -150,263 +150,263 @@ Antes de automatizar el proceso, es importante entender cómo funciona la config
        "activityBar.background": "#00D4AA",
        "statusBar.background": "#00D4AA"
      },
-     "window.title": "${rootName} - Agente DASHBOARD"
+     "window.title": "${rootName} - Agent DASHBOARD"
    }
    ```
 
-### Abrir y Gestionar Múltiples Instancias
+### Open and Manage Multiple Instances
 
-10. **Abrir Cada Agente en Cursor/VS Code**
+10. **Open Each Agent in Cursor/VS Code**
     ```bash
-    # Abrir cada worktree en una ventana separada
+    # Open each worktree in a separate window
     cursor ../worktrees/feature-auth
     cursor ../worktrees/feature-dashboard
     cursor ../worktrees/feature-api
     ```
 
-11. **Inicializar Claude Code en Cada Instancia**
+11. **Initialize Claude Code in Each Instance**
     ```bash
-    # En cada terminal de cada ventana
+    # In each terminal of each window
     claude
     ```
 
-12. **Verificar la Configuración**
-    - Cada ventana debe tener un color diferente en la barra de título
-    - Cada agente debe estar en su rama correspondiente
-    - Los archivos de configuración deben estar presentes
+12. **Verify Configuration**
+    - Each window should have a different color in the title bar
+    - Each agent should be on its corresponding branch
+    - Configuration files should be present
 
-### Flujo de Trabajo Manual
+### Manual Workflow
 
-13. **Asignar Tareas Específicas**
+13. **Assign Specific Tasks**
     ```bash
-    # En la ventana del agente AUTH
-    > Lee tu README.md y comienza a implementar el sistema de autenticación con JWT
+    # In the AUTH agent window
+    > Read your README.md and start implementing the JWT authentication system
     
-    # En la ventana del agente DASHBOARD  
-    > Lee tu README.md y crea un dashboard con componentes reutilizables
+    # In the DASHBOARD agent window  
+    > Read your README.md and create a dashboard with reusable components
     ```
 
-14. **Integrar Cambios Manualmente**
+14. **Integrate Changes Manually**
     ```bash
-    # Una vez que un agente complete su trabajo
+    # Once an agent completes its work
     cd worktrees/feature-auth/
     git add .
-    git commit -m "feat: implementar autenticación JWT completa"
+    git commit -m "feat: implement complete JWT authentication"
     
-    # Volver al repo principal y fusionar
+    # Return to main repo and merge
     cd ../../app/
     git merge feature/auth
     ```
 
-### Ventajas del Proceso Manual
+### Advantages of the Manual Process
 
-- **Control Total**: Entiendes cada paso del proceso
-- **Personalización**: Puedes ajustar cada configuración específicamente
-- **Debugging**: Más fácil identificar problemas en la configuración
-- **Aprendizaje**: Comprendes profundamente cómo funcionan los worktrees
+- **Total Control**: You understand each step of the process
+- **Customization**: You can adjust each configuration specifically
+- **Debugging**: Easier to identify configuration problems
+- **Learning**: You deeply understand how worktrees work
 
-## Automatizando la Creación de Agentes con Goose y un Prompt Inteligente
+## Automating Agent Creation with Goose and an Intelligent Prompt
 
-Ahora que entiendes el proceso manual, automatizaremos usando Codename Goose para que puedas crear múltiples agentes en segundos.
+Now that you understand the manual process, we'll automate using Codename Goose so you can create multiple agents in seconds.
 
-### El Prompt para la Creación de Worktrees
+### The Prompt for Worktree Creation
 
-Este prompt le indica a un agente (en nuestro caso, Goose ejecutando Claude Code) que configure todo el entorno por nosotros.
+This prompt tells an agent (in our case, Goose executing Claude Code) to configure the entire environment for us.
 
 ```
-🎯 PROMPT PARA CLAUDE CODE:
-Crea nuevos worktrees de características con estructura organizada y configuraciones únicas de VS Code. Ejecuta todo el proceso de configuración inmediatamente.
+🎯 PROMPT FOR CLAUDE CODE:
+Create new feature worktrees with organized structure and unique VS Code configurations. Execute the entire configuration process immediately.
 
-**PRIMERO: Pregunta al usuario qué ramas de características deben crearse.**
+**FIRST: Ask the user what feature branches should be created.**
 
-Pregunta: "¿Qué ramas de características te gustaría crear? Por favor proporciona los nombres de las características (sin el prefijo 'feature-'). Por ejemplo: auth, dashboard, payments, notifications"
+Question: "What feature branches would you like to create? Please provide the feature names (without the 'feature-' prefix). For example: auth, dashboard, payments, notifications"
 
-Espera la respuesta del usuario con la lista de características, luego procede con la ejecución.
+Wait for the user's response with the list of features, then proceed with execution.
 
-**Estructura de Proyecto Esperada:**
-[nombre-proyecto]/
-├── app/ # Aplicación principal (repositorio git)
+**Expected Project Structure:**
+[project-name]/
+├── app/ # Main application (git repository)
 │   ├── src/
 │   ├── .claude/
-│   └── ... (archivos de aplicación)
-└── worktrees/ # Directorio de worktrees de características
-    ├── feature-auth/ # Worktrees de características a crear
+│   └── ... (application files)
+└── worktrees/ # Feature worktrees directory
+    ├── feature-auth/ # Feature worktrees to create
     ├── feature-dashboard/
     ├── feature-payments/
-    └── feature-[especificado-por-usuario]/
+    └── feature-[user-specified]/
 
-**PARA CADA CARACTERÍSTICA ESPECIFICADA POR EL USUARIO, EJECUTA ESTOS PASOS:**
+**FOR EACH FEATURE SPECIFIED BY THE USER, EXECUTE THESE STEPS:**
 
-1. **Validar Entorno Actual**
-   - Verificar que estamos en el directorio correcto del proyecto
-   - Comprobar si existe repositorio git en el directorio app/
-   - Asegurar que la estructura del directorio worktrees/ esté lista
+1. **Validate Current Environment**
+   - Verify we are in the correct project directory
+   - Check if git repository exists in app/ directory
+   - Ensure worktrees/ directory structure is ready
 
-2. **Crear Git Worktrees**
+2. **Create Git Worktrees**
    ```bash
    cd app/
-   git worktree add ../worktrees/feature-[NOMBRE_CARACTERISTICA] -b feature/[NOMBRE_CARACTERISTICA]
+   git worktree add ../worktrees/feature-[FEATURE_NAME] -b feature/[FEATURE_NAME]
    ```
 
-3. **Copiar Configuración Base**
+3. **Copy Base Configuration**
    ```bash
-   cd ../worktrees/feature-[NOMBRE_CARACTERISTICA]/
+   cd ../worktrees/feature-[FEATURE_NAME]/
    cp -r ../../app/.claude ./
-   cp -r ../../app/.vscode ./ # Copiar configuraciones de VS Code/Cursor
+   cp -r ../../app/.vscode ./ # Copy VS Code/Cursor configurations
    cp ../../app/.gitignore ./
    cp ../../app/package.json ./
    ```
 
-4. **Crear Configuración Única de VS Code** (con esquemas de colores distintos para no confundirnos)
-   Crear `.vscode/settings.json` con configuraciones específicas de la característica:
+4. **Create Unique VS Code Configuration** (with distinct color schemes so we don't get confused)
+   Create `.vscode/settings.json` with feature-specific configurations:
    ```json
    {
-     "workbench.colorTheme": "[TEMA_UNICO_PARA_CARACTERISTICA]",
+     "workbench.colorTheme": "[UNIQUE_THEME_FOR_FEATURE]",
      "workbench.colorCustomizations": {
-       "titleBar.activeBackground": "[COLOR_UNICO]",
+       "titleBar.activeBackground": "[UNIQUE_COLOR]",
        "titleBar.activeForeground": "#FFFFFF",
-       "activityBar.background": "[COLOR_UNICO]",
-       "statusBar.background": "[COLOR_UNICO]"
+       "activityBar.background": "[UNIQUE_COLOR]",
+       "statusBar.background": "[UNIQUE_COLOR]"
      },
-     "window.title": "${rootName} - Agente [NOMBRE_CARACTERISTICA]"
+     "window.title": "${rootName} - Agent [FEATURE_NAME]"
    }
    ```
 
-5. **Crear Documentación de Característica** (un `README.md` para cada agente con sus responsabilidades)
-   Crear README.md detallado para cada característica con responsabilidades específicas
+5. **Create Feature Documentation** (a `README.md` for each agent with their responsibilities)
+   Create detailed README.md for each feature with specific responsibilities
 
-6. **Inicializar Ramas de Características** (haciendo el primer commit)
+6. **Initialize Feature Branches** (making the first commit)
    ```bash
    git add .
-   git commit -m "feat: inicializar worktree de característica [NOMBRE_CARACTERISTICA]"
+   git commit -m "feat: initialize feature worktree [FEATURE_NAME]"
    ```
 
-7. **Verificar Cada Configuración**
-   - Confirmar que el worktree está correctamente vinculado al repositorio principal
-   - Probar que las operaciones de git funcionen correctamente
-   - Verificar que las configuraciones únicas estén aplicadas
+7. **Verify Each Configuration**
+   - Confirm the worktree is correctly linked to the main repository
+   - Test that git operations work correctly
+   - Verify unique configurations are applied
 ```
 
-Puedes encontrar el prompt completo aquí: [Prompt de Ejecución para Creación de Worktrees](https://gist.github.com/brolag/76e77785cd5233dbe91bad1d75457550)
+You can find the complete prompt here: [Execution Prompt for Worktree Creation](https://gist.github.com/brolag/76e77785cd5233dbe91bad1d75457550)
 
-### Pasos para la Automatización:
+### Steps for Automation:
 
-1. **Abre Codename Goose**: Navega al directorio padre que contiene tu aplicación (la carpeta `app`).
+1. **Open Codename Goose**: Navigate to the parent directory containing your application (the `app` folder).
 
-2. **Pega el Prompt**: Copia el prompt anterior y pégalo en la interfaz de chat de Goose.
+2. **Paste the Prompt**: Copy the previous prompt and paste it into Goose's chat interface.
 
-3. **Define tus Agentes**: Goose te preguntará qué ramas de características (features) quieres crear. Introduce los nombres separados por comas. Por ejemplo: `landing-page, tutorial-system, code-generator, terminal-simulator, dashboard`.
+3. **Define Your Agents**: Goose will ask what feature branches you want to create. Enter the names separated by commas. For example: `landing-page, tutorial-system, code-generator, terminal-simulator, dashboard`.
 
-4. **Ejecución**: Goose comenzará a crear una carpeta `worktrees` y dentro de ella, una carpeta para cada agente con su propia rama de Git, un README.md y una configuración de color única para VS Code o Cursor.
+4. **Execution**: Goose will start creating a `worktrees` folder and inside it, a folder for each agent with its own Git branch, a README.md, and a unique color configuration for VS Code or Cursor.
 
-5. **Crea una "Receta"**: Una de las mejores funcionalidades de Goose es que puedes guardar esta sesión de chat como una "receta". Esto te permite reutilizar el proceso completo en el futuro con un solo clic, sin tener que copiar y pegar el prompt de nuevo.
+5. **Create a "Recipe"**: One of Goose's best features is that you can save this chat session as a "recipe". This allows you to reuse the complete process in the future with a single click, without having to copy and paste the prompt again.
 
-## Ejecutando tu Ejército de Agentes 🎖️
+## Running Your Army of Agents 🎖️
 
-Una vez que Goose ha terminado, te pedirá abrir cada worktree en una instancia separada de Cursor.
+Once Goose has finished, it will ask you to open each worktree in a separate instance of Cursor.
 
-### Configuración de las Instancias:
+### Instance Configuration:
 
-1. **Abre las Instancias**: Acepta la sugerencia de Goose para abrir cada carpeta. Verás que cada ventana de Cursor tiene un color diferente en la barra de título, lo que facilita la identificación de cada agente.
+1. **Open the Instances**: Accept Goose's suggestion to open each folder. You'll see that each Cursor window has a different color in the title bar, making it easy to identify each agent.
 
-2. **Inicializa Claude Code**: En la terminal de cada instancia de Cursor, inicializa Claude Code con el comando `claude`.
+2. **Initialize Claude Code**: In the terminal of each Cursor instance, initialize Claude Code with the `claude` command.
 
-3. **Asigna las Tareas**: Ahora puedes empezar a dar instrucciones a cada agente de forma independiente. Un buen punto de partida es pedirle que lea su propio archivo README.md para que entienda su contexto y responsabilidades.
+3. **Assign Tasks**: Now you can start giving instructions to each agent independently. A good starting point is asking it to read its own README.md file so it understands its context and responsibilities.
 
 ```bash
-# En la ventana del agente 'landing-page'
+# In the 'landing-page' agent window
 claude
-> Por favor comienza a trabajar en la tarea de la página de inicio. Asegúrate de leer el archivo readme.
+> Please start working on the landing page task. Make sure to read the readme file.
 ```
 
-Mientras un agente está "pensando", puedes saltar a otra ventana y dar instrucciones a otro agente, optimizando tu tiempo al máximo.
+While one agent is "thinking", you can jump to another window and give instructions to another agent, optimizing your time to the maximum.
 
-## Gestionando el Flujo de Trabajo y Resolviendo Conflictos
+## Managing Workflow and Resolving Conflicts
 
-A medida que cada agente completa su trabajo, debes integrar sus cambios en la rama principal (`main`).
+As each agent completes its work, you need to integrate their changes into the main branch (`main`).
 
-### Realiza Commits:
+### Make Commits:
 
-En cada worktree, haz commit de los cambios generados por el agente.
+In each worktree, commit the changes generated by the agent.
 
 ```bash
-# Dentro de worktrees/feature-dashboard
+# Inside worktrees/feature-dashboard
 git add .
 git commit -m "feat: add initial dashboard structure"
 ```
 
-### Fusiona las Ramas:
+### Merge Branches:
 
-Vuelve a la carpeta principal de tu aplicación (`app`) y fusiona la rama de la característica.
+Return to your application's main folder (`app`) and merge the feature branch.
 
 ```bash
-# Dentro de la carpeta /app
+# Inside the /app folder
 git merge feature/dashboard
 ```
 
-### Resolución de Conflictos:
+### Conflict Resolution:
 
-¡Inevitablemente, surgirán conflictos! Especialmente si varios agentes modifican el mismo archivo (como `package.json`). Cuando esto ocurra, puedes pedirle ayuda al propio Claude Code para resolverlos.
+Inevitably, conflicts will arise! Especially if several agents modify the same file (like `package.json`). When this happens, you can ask Claude Code itself for help resolving them.
 
 ```bash
-# Después de un intento de merge fallido
+# After a failed merge attempt
 claude
-> Ayúdame a resolver estos conflictos de merge. Al fusionar la característica 'terminal-simulator', 
-> crea una nueva página para ella y agrega enlaces de navegación para todas las nuevas características.
+> Help me resolve these merge conflicts. When merging the 'terminal-simulator' feature, 
+> create a new page for it and add navigation links for all the new features.
 ```
 
-Claude es sorprendentemente bueno para entender el contexto de los conflictos y proponer soluciones lógicas, como crear nuevos componentes o páginas para evitar colisiones.
+Claude is surprisingly good at understanding the context of conflicts and proposing logical solutions, like creating new components or pages to avoid collisions.
 
-## Resultados y Próximos Pasos
+## Results and Next Steps
 
-Al final de este proceso, tendrás una rama `main` que integra el trabajo de todos tus agentes. Podrás ver las diferentes páginas y funcionalidades que cada uno creó, todo fusionado en un solo proyecto coherente.
+At the end of this process, you'll have a `main` branch that integrates the work of all your agents. You'll be able to see the different pages and functionalities that each one created, all merged into a single coherent project.
 
-**Consejo clave**: La calidad del resultado depende enormemente de la calidad de las instrucciones. Asegúrate de que cada README.md sea muy específico sobre las responsabilidades y el alcance de cada agente.
+**Key tip**: The quality of the result depends heavily on the quality of the instructions. Make sure each README.md is very specific about the responsibilities and scope of each agent.
 
-⛩️ ## Reflexión Final
+⛩️ ## Final Reflection
 
-El desarrollo multi-agente con Git Worktrees representa un cambio paradigmático en cómo abordamos proyectos de software complejos. Ya no estamos limitados por el procesamiento secuencial de un solo agente; en su lugar, podemos orquestar un verdadero equipo de desarrolladores de IA, cada uno especializado en una parte específica del proyecto.
+Multi-agent development with Git Worktrees represents a paradigmatic shift in how we approach complex software projects. We are no longer limited by the sequential processing of a single agent; instead, we can orchestrate a true team of AI developers, each specialized in a specific part of the project.
 
-Esta metodología no solo acelera significativamente el desarrollo, sino que también mejora la calidad del código al permitir que cada agente se enfoque profundamente en su dominio específico. La combinación de la potencia de Claude Code con el aislamiento perfecto de Git Worktrees crea un entorno donde la productividad puede multiplicarse exponencialmente.
+This methodology not only significantly accelerates development but also improves code quality by allowing each agent to focus deeply on its specific domain. The combination of Claude Code's power with the perfect isolation of Git Worktrees creates an environment where productivity can multiply exponentially.
 
-Los beneficios van más allá de la velocidad: obtienes mejor arquitectura, código más mantenible, testing más comprehensivo, y documentación más detallada. Cada agente, al trabajar en su área especializada, puede dedicar toda su capacidad de procesamiento a perfeccionar esa funcionalidad específica.
+The benefits go beyond speed: you get better architecture, more maintainable code, more comprehensive testing, and more detailed documentation. Each agent, working in its specialized area, can dedicate all its processing capacity to perfecting that specific functionality.
 
-## 📚 Recursos Extra
+## 📚 Extra Resources
 
-### Prompts y Scripts Esenciales
-- **[Prompt de Ejecución para Creación de Worktrees](https://gist.github.com/brolag/76e77785cd5233dbe91bad1d75457550)** - Prompt principal para automatización
-- **[Scripts de Coordinación Multi-agente](https://gist.github.com/brolag/301311f0ff4e41d8cd1ef76075a4423e)** - Scripts de gestión y monitoreo
-- **[Estrategias de Resolución de Conflictos](https://gist.github.com/brolag/647cf9870bb433b5f31db1aeccab9273)** - Técnicas para resolver conflictos
-- **[Plantillas de Flujo de Trabajo Avanzadas](https://gist.github.com/brolag/55d232650fcec6f35493398f1ab6adc4)** - Plantillas para proyectos complejos
+### Essential Prompts and Scripts
+- **[Execution Prompt for Worktree Creation](https://gist.github.com/brolag/76e77785cd5233dbe91bad1d75457550)** - Main prompt for automation
+- **[Prompt for branch creation](https://gist.github.com/brolag/301311f0ff4e41d8cd1ef76075a4423e)** - Management and monitoring scripts
+- **[Prompt for semantic commit creation](https://gist.github.com/brolag/647cf9870bb433b5f31db1aeccab9273)** - Techniques for resolving conflicts
+- **[Advanced Workflow Templates](https://gist.github.com/brolag/55d232650fcec6f35493398f1ab6adc4)** - Templates for complex projects
 
-### Gestores de Multi-agentes
-- **[Magnet](https://www.magnet.run/)** - Plataforma para orquestar equipos de agentes de IA
-- **[Granja de Agentes Claude Code](https://github.com/Dicklesworthstone/claude_code_agent_farm)** - Sistema distribuido para gestionar múltiples agentes Claude
-- **[Conductor](https://conductor.build/)** - Framework para construir aplicaciones multi-agente
-- **[Claude Squad](https://github.com/smtg-ai/claude-squad)** - Herramientas para coordinar equipos de Claude
+### Multi-agent Managers
+- **[Magnet](https://www.magnet.run/)** - Platform for orchestrating AI agent teams
+- **[Claude Code Agent Farm](https://github.com/Dicklesworthstone/claude_code_agent_farm)** - Distributed system for managing multiple Claude agents
+- **[Conductor](https://conductor.build/)** - Framework for building multi-agent applications
+- **[Claude Squad](https://github.com/smtg-ai/claude-squad)** - Tools for coordinating Claude teams
 
-### Otras Herramientas de IA para Desarrollo
-- **[OpenCode AI](https://opencode.ai/)** - Plataforma de desarrollo asistido por IA
-- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Interfaz de línea de comandos para Google Gemini
+### Other AI Development Tools
+- **[OpenCode AI](https://opencode.ai/)** - AI-assisted development platform
+- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Command line interface for Google Gemini
 
-### Certificación y Formación
-- **[Claude Code en Acción - Certificación](https://anthropic.skilljar.com/claude-code-in-action)** - Curso oficial de certificación en Claude Code de Anthropic
+### Certification and Training
+- **[Claude Code in Action - Certification](https://anthropic.skilljar.com/claude-code-in-action)** - Official Claude Code certification course from Anthropic
 
-### Documentación Oficial
-- **[Codename Goose](https://block.xyz/goose)** - Página oficial de Codename Goose
-- **[Claude Code](https://claude.ai/code)** - Página oficial de Claude Code
-- **[Documentación de Cursor](https://docs.cursor.sh/)** - Guía completa de Cursor
-- **[Documentación sobre Worktrees en Claude Code](https://docs.anthropic.com/en/docs/build-with-claude/claude-code/guides/worktrees)** - Ejecutar sesiones paralelas de Claude Code con Git worktrees
+### Official Documentation
+- **[Codename Goose](https://block.xyz/goose)** - Official Codename Goose page
+- **[Claude Code](https://claude.ai/code)** - Official Claude Code page
+- **[Cursor Documentation](https://docs.cursor.sh/)** - Complete Cursor guide
+- **[Worktrees Documentation in Claude Code](https://docs.anthropic.com/en/docs/build-with-claude/claude-code/guides/worktrees)** - Running parallel Claude Code sessions with Git worktrees
 
-### Lecturas Recomendadas
-- **[El Ingeniero de Software Nativo de IA](https://addyo.substack.com/p/the-ai-native-software-engineer)** - Cómo evoluciona el rol del desarrollador con IA
-- **[El Patrón "Confía pero Verifica" para Ingeniería de IA](https://addyo.substack.com/p/the-trust-but-verify-pattern-for)** - Estrategias para trabajar efectivamente con IA
-- **[El Manual de Ingeniería de Prompts para Desarrolladores](https://addyo.substack.com/p/the-prompt-engineering-playbook-for)** - Guía completa para ingeniería de prompts
-- **[La IA No Matará a los Desarrolladores Junior, Pero Tu Mentalidad Sí Podría](https://addyo.substack.com/p/ai-wont-kill-junior-devs-but-your)** - Perspectivas sobre el futuro del desarrollo con IA
+### Recommended Reading
+- **[The AI Native Software Engineer](https://addyo.substack.com/p/the-ai-native-software-engineer)** - How the developer role evolves with AI
+- **[The "Trust but Verify" Pattern for AI Engineering](https://addyo.substack.com/p/the-trust-but-verify-pattern-for)** - Strategies for working effectively with AI
+- **[The Prompt Engineering Playbook for Developers](https://addyo.substack.com/p/the-prompt-engineering-playbook-for)** - Complete guide to prompt engineering
+- **[AI Won't Kill Junior Devs, But Your Mindset Might](https://addyo.substack.com/p/ai-wont-kill-junior-devs-but-your)** - Perspectives on the future of AI development
 
-### Recursos Complementarios
-- **[Documentación de Git Worktrees](https://git-scm.com/docs/git-worktree)** - Documentación oficial de Git Worktrees
-- **[Mejores Prácticas de Desarrollo Multi-agente](https://github.com/topics/multi-agent)** - Repositorios y ejemplos
-- **[Commits Semánticos](https://www.conventionalcommits.org/)** - Estándar para mensajes de commit
+### Complementary Resources
+- **[Git Worktrees Documentation](https://git-scm.com/docs/git-worktree)** - Official Git Worktrees documentation
+- **[Multi-agent Development Best Practices](https://github.com/topics/multi-agent)** - Repositories and examples
+- **[Semantic Commits](https://www.conventionalcommits.org/)** - Standard for commit messages
 
-¡Espero que este tutorial te sea de gran utilidad! Prueba esta metodología, experimenta con diferentes agentes y comparte tus resultados. ¡Feliz codificación con tu nuevo ejército de IA! 🚀
+I hope this tutorial is very useful to you! Try this methodology, experiment with different agents and share your results. Happy coding with your new AI army! 🚀
