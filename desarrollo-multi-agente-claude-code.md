@@ -377,7 +377,7 @@ The benefits go beyond speed: you get better architecture, more maintainable cod
 - **[Execution Prompt for Worktree Creation](https://gist.github.com/brolag/76e77785cd5233dbe91bad1d75457550)** - Main prompt for automation
 - **[Prompt for branch creation](https://gist.github.com/brolag/301311f0ff4e41d8cd1ef76075a4423e)** - Management and monitoring scripts
 - **[Prompt for semantic commit creation](https://gist.github.com/brolag/647cf9870bb433b5f31db1aeccab9273)** - Techniques for resolving conflicts
-- **[Advanced Workflow Templates](https://gist.github.com/brolag/55d232650fcec6f35493398f1ab6adc4)** - Templates for complex projects
+- **[Feature Specification](https://gist.github.com/brolag/55d232650fcec6f35493398f1ab6adc4)** - Spec Specification prompt
 
 ### Multi-agent Managers
 - **[Magnet](https://www.magnet.run/)** - Platform for orchestrating AI agent teams
