@@ -1,0 +1,10 @@
+name = "Dojo Coding Playbooks"
+tagline = "Guides and methods [we use internally]"
+chips = ["Claude Code / Git worktrees"]
+meta = "Open source · Markdown"
+tile = ">_"
+
+[card]
+kind = "ledger"
+label = "Multi-agent playbook"
+rows = [["Manual setup", "A worktree and branch per agent", "step 1"], ["Automate with Goose", "One prompt builds every worktree", "step 2"], ["Run the agents", "Claude Code in each Cursor window", "step 3"], ["Merge the work", "Commit, merge, resolve conflicts", "step 4"]]
