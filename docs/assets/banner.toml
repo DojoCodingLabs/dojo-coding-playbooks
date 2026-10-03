@@ -1,7 +1,7 @@
 name = "Dojo Coding Playbooks"
 tagline = "Guides and methods [we use internally]"
 chips = ["Claude Code / Git worktrees"]
-meta = "Open source · Markdown"
+meta = "Public · Markdown"
 tile = ">_"
 
 [card]
