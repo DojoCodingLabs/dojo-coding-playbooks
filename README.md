@@ -1,44 +1,51 @@
-# 🥋 Dojo Coding - Official Playbooks
+<p align="center">
+  <a href="https://dojocoding.io">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/assets/banner-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="docs/assets/banner-light.svg">
+      <img alt="Dojo Coding Playbooks by Dojo Coding: Guides and methods we use internally" src="docs/assets/banner-light.svg" width="100%">
+    </picture>
+  </a>
+</p>
 
-<div align="center">
-  <img src="https://www.dojocoding.io/images/logo.png" alt="Dojo Coding" width="200"/>
-  
-  **Centralizing Talent To Decentralize The Future**
-  
-  [![Website](https://img.shields.io/badge/Website-dojocoding.io-blue)](https://www.dojocoding.io/)
-  [![Developers](https://img.shields.io/badge/Developers-1800+-green)](https://www.dojocoding.io/)
-  [![Countries](https://img.shields.io/badge/Countries-8+-orange)](https://www.dojocoding.io/)
-  [![Startups](https://img.shields.io/badge/Startups-8+-purple)](https://www.dojocoding.io/)
-</div>
+# Dojo Coding Playbooks
 
-## 🌟 What is Dojo Coding?
+**The practical guides Dojo Coding uses internally, shared with builders; the first one covers multi-agent development with Claude Code.**
+
+**Centralizing Talent To Decentralize The Future**
+
+[![Website](https://img.shields.io/badge/Website-dojocoding.io-FF7151?labelColor=201E3D)](https://www.dojocoding.io/) [![Developers](https://img.shields.io/badge/Developers-1800%2B-FF7151?labelColor=201E3D)](https://www.dojocoding.io/) [![Countries](https://img.shields.io/badge/Countries-8%2B-FF7151?labelColor=201E3D)](https://www.dojocoding.io/) [![Startups](https://img.shields.io/badge/Startups-8%2B-FF7151?labelColor=201E3D)](https://www.dojocoding.io/)
+
+[Multi-agent playbook](desarrollo-multi-agente-claude-code.md) · [What are playbooks](#what-are-playbooks) · [Get started](#ready-to-get-started) · [Report an issue](https://github.com/DojoCodingLabs/dojo-coding-playbooks/issues/new)
+
+## What is Dojo Coding?
 
 Dojo Coding is the leading Latin American ecosystem for technological talent development, specialized in **Web3**, **Artificial Intelligence**, and **Cybersecurity**. Our mission is to build a bridge between emerging talent from Latin America and global opportunities in decentralized technologies.
 
-## 🎯 Our Ecosystem
+## Our Ecosystem
 
-### 🎓 **Academy**
+### **Academy**
 We transform developers through:
 - **High-impact training** in emerging technologies
 - **"Learn while you earn" model** - monetize your skills from day one
 - **Skill development** in Web3, AI, and cybersecurity
 - **Global portfolios** that open international doors
 
-### 🏢 **Enterprise**
+### **Enterprise**
 We implement technological solutions for companies:
 - **Web3 and AI implementation** with Latin American expertise
 - **Guaranteed results** backed by our certified talent
 - **Specialized consulting** in decentralized technologies
 - **Highly trained technical teams**
 
-### 🚀 **Launchpad**
+### **Launchpad**
 We accelerate startups from idea to funding:
 - **120-day program** from idea to funded startup
 - **Guaranteed technical co-founder** to overcome technological barriers
 - **Team formation** specialized in emerging technologies
 - **Access to investor network** and ecosystem mentors
 
-## 📊 Our Impact
+## Our Impact
 
 | Metric | Achievement |
 |---------|-------|
@@ -48,7 +55,7 @@ We accelerate startups from idea to funding:
 | 🚀 **Startups Launched** | 8+ |
 | 🌎 **Countries of Operation** | 8+ |
 
-## 🛣️ Growth Paths
+## Growth Paths
 
 ### For Developers
 1. **Skill Mastery** - Specialize in future technologies
@@ -68,7 +75,7 @@ We accelerate startups from idea to funding:
 3. **Rapid Development** - From idea to product in 120 days
 4. **Funding** - Connect with our investor network
 
-## 📚 What are Playbooks?
+## What are Playbooks?
 
 This repository contains **official Dojo Coding playbooks**: practical guides, tutorials, and methodologies that we use internally and share with our community for:
 
@@ -78,14 +85,14 @@ This repository contains **official Dojo Coding playbooks**: practical guides, t
 - 🚀 **Startup Development** - Proven methodologies for rapid launch
 - 📈 **Technical Scaling** - Strategies for growing tech teams
 
-## 🎖️ Recognition
+## Recognition
 
 Dojo Coding has been featured in leading industry publications:
 - **DL News** - Recognition for innovation in Web3 education
 - **CryptoSlate** - Coverage of our development programs
 - **Redline Lab** - Strategic investment and support
 
-## 🌎 Global Community
+## Global Community
 
 Join our community of developers, entrepreneurs, and visionaries:
 
@@ -95,7 +102,7 @@ Join our community of developers, entrepreneurs, and visionaries:
 - 💬 **Discord**: Connect with the community
 - 📧 **Newsletter**: Receive exclusive content
 
-## 🎯 Our Values
+## Our Values
 
 - **🌟 Excellence** - We seek maximum quality in everything we do
 - **🤝 Collaboration** - We believe in the power of teamwork
@@ -103,7 +110,7 @@ Join our community of developers, entrepreneurs, and visionaries:
 - **🌍 Impact** - We work to transform Latin America
 - **📚 Learning** - We never stop growing and evolving
 
-## 🛠️ Core Technologies
+## Core Technologies
 
 ### Web3 & Blockchain
 - Ethereum, Polygon, Binance Smart Chain
@@ -123,7 +130,7 @@ Join our community of developers, entrepreneurs, and visionaries:
 - Blockchain Security Audits
 - DevSecOps
 
-## 📞 Ready to Get Started?
+## Ready to Get Started?
 
 ### For Developers
 Want to transform your career and specialize in future technologies?
@@ -144,3 +151,11 @@ Have an idea but need a technical co-founder?
   
   *Building the decentralized future, one developer at a time*
 </div>
+
+## Credits
+
+Built by [Dojo Coding](https://dojocoding.io).
+
+<p align="center">
+  <a href="https://dojocoding.io"><img src="docs/assets/dojocoding-mark.png" alt="Dojo Coding" width="48"></a>
+</p>
